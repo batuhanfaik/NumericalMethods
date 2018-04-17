@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include "graphicalMethod.h"
+#include "bisectionMethod.h"
+
 
 int main() {
 	//Degisken tanimlari
@@ -22,6 +24,9 @@ int main() {
 	switch (islem) {
 	case (1):
 		graphicalMethod();
+		break;
+	case (2):
+		bisectionMethod();
 		break;
 	default:
 		printf("Islem secilmedi.");

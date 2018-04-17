@@ -10,61 +10,52 @@
 
 void graphicalMethod() {
 	//Degiskenler
-	double xVal1, xVal2, epsilon;
-	int degree;
+		double xval, delta, epsilon;
+		int degree;
 
-	//Girdiler
-	printf("Kacinci dereceden fonksiyonun kokunu ariyorsunuz?: ");
-	scanf("%d", &degree);
+		//Girdiler
+		printf("Kacinci dereceden fonksiyonun kokunu ariyorsunuz?: ");
+		scanf("%d", &degree);
 
-	//Katsayilar dizisi
-	double coefficient[degree + 1];
-	for (int i = degree; i >= 0; i--) {
-		printf("%d. derecenin katsayisi: ", i);
-		scanf("%lf", &coefficient[i]);
-	}
-
-	//Girdiler
-	printf("Baslangic X1 ve X2 degerleri: ");
-	scanf("%lf %lf", &xVal1, &xVal2);
-
-	printf("Epsilon degeri: ");
-	scanf("%lf", &epsilon);
-
-	//Fonksiyon
-	double f(double xval) {
-		double value = 0;
-		double thisx = 1;
-
-		//Fonksiyonun hesaplandigi dongu
-		for (int i = 0; i < (degree + 1); i++) {
-			value = coefficient[i] * thisx + value;
-			thisx = thisx * xval;
-		}
-		return value;
-	}
-
-	//Ilk ortanca deger atamasi
-	double xValMid = (xVal1 + xVal2) / 2;
-
-	//Hesaplama Dongusu
-	while (fabs(f(xValMid)) > epsilon) {
-
-		//Eger kok birinci ve ortanca deger arasindaysa yeni ortanca ikinci deger
-		if (f(xVal1) * f(xValMid) < 0) {
-			xVal2 = xValMid;
-		}
-		//Eger kok birinci ve ortanca deger arasinda degilse yeni ortanca birinci deger
-		else {
-			xVal1 = xValMid;
+		//Katsayilar dizisi
+		double coefficient[degree];
+		for (int i = degree; i >= 0; i--) {
+			printf("%d. derecenin katsayisi: ", i);
+			scanf("%lf", &coefficient[i]);
 		}
 
-		//Yeni ortanca hesabi
-		xValMid = (xVal1 + xVal2) / 2;
-	}
+		//Girdiler
+		printf("Baslangic X degeri: ");
+		scanf("%lf", &xval);
 
-	//Cikti
-	printf("Fonksiyonun koku: %lf", xValMid);
+		printf("Delta ve Epsilon degerleri: ");
+		scanf("%lf %lf", &delta, &epsilon);
+
+		//Fonksiyon
+		double f(double xval) {
+			double value = 0;
+			double thisx = 1;
+
+			//Fonksiyonun hesaplandigi dongu
+			for (int i = 0; i < (degree + 1); i++) {
+				value = coefficient[i] * thisx + value;
+				thisx = thisx * xval;
+			}
+
+			return value;
+		}
+
+		while ((((f(xval + delta) - f(xval)) > epsilon)
+				|| ((f(xval) - f(xval + delta)) > epsilon)) && (f(xval) != 0)) {
+			while (((f(xval) * f(xval + delta) > 0)) && f(xval + delta) != 0) {
+				xval += delta;
+			}
+			xval -= delta;
+			delta /= 2;
+		}
+
+		//Cikti
+		printf("Fonksiyonun koku: %lf", xval + delta);
 }
 
 #endif /* GRAPHICALMETHOD_H_ */
