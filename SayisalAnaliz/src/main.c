@@ -10,6 +10,7 @@
 #include <math.h>
 #include "graphicalMethod.h"
 #include "bisectionMethod.h"
+#include "regulaFalsiMethod.h"
 
 int main() {
 	//Degisken tanimlari
@@ -20,6 +21,7 @@ int main() {
 		//Islem secimi
 		printf("1-Grafik metoduyla kök bulma\n"
 				"2-Bisection metoduyla kök bulma\n"
+				"3-Regula Falsi metoduyla kök bulma\n"
 				"Yapmak istediginiz islemin numarasini giriniz: ");
 		scanf("%d", &islem);
 
@@ -30,6 +32,9 @@ int main() {
 			break;
 			case (2):
 			bisectionMethod();
+			break;
+			case (3):
+			regulaFalsiMethod();
 			break;
 			default:
 			printf("Islem secilmedi.");
