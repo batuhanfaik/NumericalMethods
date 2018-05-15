@@ -28,7 +28,7 @@ void graphicalMethod() {
 		printf("Baslangic X degeri: ");
 		scanf("%lf", &xval);
 
-		printf("Delta ve Epsilon degerleri: ");
+		printf("Sirasiyla aralarinda bosluk birakarak\nDelta ve Epsilon degerleri: ");
 		scanf("%lf %lf", &delta, &epsilon);
 
 		//Fonksiyon
@@ -46,7 +46,7 @@ void graphicalMethod() {
 		}
 
 		while ((((f(xval + delta) - f(xval)) > epsilon)
-				|| ((f(xval) - f(xval + delta)) > epsilon)) && (f(xval) != 0)) {
+				|| ((f(xval) - f(xval + delta)) > epsilon)) && (f(xval) != 0) && (delta >= epsilon)) {
 			while (((f(xval) * f(xval + delta) > 0)) && f(xval + delta) != 0) {
 				xval += delta;
 			}

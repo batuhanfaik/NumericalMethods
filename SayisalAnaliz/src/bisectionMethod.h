@@ -11,7 +11,7 @@
 void bisectionMethod(){
 	//Degiskenler
 	double xVal1, xVal2, epsilon;
-	int degree;
+	int degree, divergence = 0;
 
 	//Girdiler
 	printf("Kacinci dereceden fonksiyonun kokunu ariyorsunuz?: ");
@@ -25,7 +25,7 @@ void bisectionMethod(){
 	}
 
 	//Girdiler
-	printf("Baslangic X1 ve X2 degerleri: ");
+	printf("Sirasiyla aralarinda bosluk birakarak\nBaslangic X1 ve X2 degerleri: ");
 	scanf("%lf %lf", &xVal1, &xVal2);
 
 	printf("Epsilon degeri: ");
@@ -48,7 +48,7 @@ void bisectionMethod(){
 	double xValMid = (xVal1 + xVal2) / 2;
 
 	//Hesaplama Dongusu
-	while (fabs(f(xValMid)) > epsilon) {
+	while (fabs(f(xValMid)) > epsilon && (divergence == 0)) {
 
 		//Eger kok birinci ve ortanca deger arasindaysa yeni ortanca ikinci deger
 		if (f(xVal1) * f(xValMid) < 0) {
@@ -59,12 +59,21 @@ void bisectionMethod(){
 			xVal1 = xValMid;
 		}
 
+		//Iraksama kontrolu
+		if (fabs(xValMid - ((xVal1 + xVal2)/2)) <= epsilon){
+			divergence = 1;
+		}
+
 		//Yeni ortanca hesabi
 		xValMid = (xVal1 + xVal2)/2;
 	}
 
 	//Cikti
-	printf("Fonksiyonun koku: %lf", xValMid);
+	if (divergence == 1){
+		printf("Koku bulamadim :(");
+	} else {
+		printf("Fonksiyonun koku: %lf", xValMid);
+	}
 }
 
 #endif /* BISECTIONMETHOD_H_ */
