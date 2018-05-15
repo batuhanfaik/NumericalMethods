@@ -28,8 +28,8 @@ void graphical() {
 	printf("Başlangıç X değeri: ");
 	scanf("%lf", &xval);
 
-	printf("Sırasıyla, aralarında boşluk bırakarak\"
-			"nDelta ve Epsilon değerleri: ");
+	printf("Sırasıyla, aralarında boşluk bırakarak\n"
+			"Delta ve Epsilon değerleri: ");
 	scanf("%lf %lf", &delta, &epsilon);
 
 	//Fonksiyon

@@ -13,6 +13,7 @@
 #include "bisectionMethod.h"
 #include "regulaFalsiMethod.h"
 #include "newtonRaphsonMethod.h"
+#include "inverseOfMatrix.h"
 #include "trapezodialMethod.h"
 #include "simpsonMethod.h"
 
@@ -33,6 +34,7 @@ int main() {
 				"2-Bisection metoduyla kök bulma\n"
 				"3-Regula Falsi metoduyla kök bulma\n"
 				"4-Newton Raphson metoduyla kök bulma\n"
+				"5-Nümerik yolla matrisin inversinin alınması\n"
 				"7-Trapez metoduyla integrasyon\n"
 				"8-Simpson metoduyla integrasyon\n"
 				"\nYapmak istediginiz işlemin numarasini giriniz: ");
@@ -50,6 +52,9 @@ int main() {
 			break;
 		case (4):
 			newtonRaphson();
+			break;
+		case (5):
+			inverseOfMatrix();
 			break;
 		case (7):
 			trapezodial();
