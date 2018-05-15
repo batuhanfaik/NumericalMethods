@@ -8,24 +8,24 @@
 #ifndef BISECTIONMETHOD_H_
 #define BISECTIONMETHOD_H_
 
-void bisectionMethod(){
+void bisection(){
 	//Degiskenler
 	double xVal1, xVal2, epsilon;
 	int degree, divergence = 0;
 
 	//Girdiler
-	printf("Kacinci dereceden fonksiyonun kokunu ariyorsunuz?: ");
+	printf("Kaçıncı dereceden polinomun kökünü arıyorsunuz?: ");
 	scanf("%d", &degree);
 
 	//Katsayilar dizisi
 	double coefficient[degree+1];
 	for (int i = degree; i >= 0; i--) {
-		printf("%d. derecenin katsayisi: ", i);
+		printf("%d. derecenin katsayısı: ", i);
 		scanf("%lf", &coefficient[i]);
 	}
 
 	//Girdiler
-	printf("Sirasiyla aralarinda bosluk birakarak\nBaslangic X1 ve X2 degerleri: ");
+	printf("Sırasıyla, aralarında boşluk bırakarak\nBaşlangıç X1 ve X2 değerleri: ");
 	scanf("%lf %lf", &xVal1, &xVal2);
 
 	printf("Epsilon degeri: ");
@@ -70,9 +70,9 @@ void bisectionMethod(){
 
 	//Cikti
 	if (divergence == 1){
-		printf("Koku bulamadim :(");
+		printf("Kök bulunamadı :(");
 	} else {
-		printf("Fonksiyonun koku: %lf", xValMid);
+		printf("Fonksiyonun kökü: %lf", xValMid);
 	}
 }
 

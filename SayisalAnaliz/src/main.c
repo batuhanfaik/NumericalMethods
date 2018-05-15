@@ -8,16 +8,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <locale.h>
 #include "graphicalMethod.h"
 #include "bisectionMethod.h"
 #include "regulaFalsiMethod.h"
 #include "newtonRaphsonMethod.h"
-
+#include "trapezodialMethod.h"
+#include "simpsonMethod.h"
 
 int main() {
+	//Turkcelestirme
+	setlocale(LC_ALL, "Turkish");
+
 	//Onemli Uyarilar
-	printf("Kök bulma yöntemlerinde kullanılacak\n"
-			"fonksiyonları lütfen polinom veriniz.\n\n");
+	printf("Kullanılacak fonksiyonları lütfen polinom veriniz.\n\n");
 
 	//Degisken tanimlari
 	int islem = 0;
@@ -29,30 +33,37 @@ int main() {
 				"2-Bisection metoduyla kök bulma\n"
 				"3-Regula Falsi metoduyla kök bulma\n"
 				"4-Newton Raphson metoduyla kök bulma\n"
-				"Yapmak istediginiz islemin numarasini giriniz: ");
+				"7-Trapez metoduyla integrasyon\n"
+				"8-Simpson metoduyla integrasyon\n"
+				"\nYapmak istediginiz işlemin numarasini giriniz: ");
 		scanf("%d", &islem);
 
-
 		switch (islem) {
-			case (1):
-			graphicalMethod();
+		case (1):
+			graphical();
 			break;
-			case (2):
-			bisectionMethod();
+		case (2):
+			bisection();
 			break;
-			case (3):
-			regulaFalsiMethod();
+		case (3):
+			regulaFalsi();
 			break;
-			case (4):
-			newtonRaphsonMethod();
+		case (4):
+			newtonRaphson();
 			break;
-			default:
+		case (7):
+			trapezodial();
+			break;
+		case (8):
+			simpson();
+			break;
+		default:
 			printf("Islem secilmedi.");
 		}
 
 		//Tekrarlayim mi?
 		tekrar = 'h';
-		printf("\n\nTekrar islem yapmak istiyor musunuz? (e/h) ");
+		printf("\n\nTekrar işlem yapmak istiyor musunuz? (e/h) ");
 		scanf(" %c", &tekrar);
 		printf("\n");
 	}

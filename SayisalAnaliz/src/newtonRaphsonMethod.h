@@ -8,31 +8,31 @@
 #ifndef NEWTONRAPHSONMETHOD_H_
 #define NEWTONRAPHSONMETHOD_H_
 
-void newtonRaphsonMethod() {
+void newtonRaphson() {
 	//Degiskenler
 	double xVal, xValTemp, epsilon;
 	int degree;
 
 	//Girdiler
-	printf("Kacinci dereceden fonksiyonun kokunu ariyorsunuz?: ");
+	printf("Kaçıncı dereceden polinomun kökünü arıyorsunuz?: ");
 	scanf("%d", &degree);
 
 	//Katsayilar dizisi
 	double coefficient[degree + 1];
 	for (int i = degree; i >= 0; i--) {
-		printf("%d. derecenin katsayisi: ", i);
+		printf("%d. derecenin katsayısı: ", i);
 		scanf("%lf", &coefficient[i]);
 	}
 
 	//Turevin katsayiar dizisi
 	double dcoefficient[degree];
 	for (int i = (degree - 1); i >= 0; i--) {
-		dcoefficient[i] = coefficient[i+1]*(i+1);
+		dcoefficient[i] = coefficient[i + 1] * (i + 1);
 	}
 
 	//Girdiler
-	printf(
-			"Sirasiyla aralarinda bosluk birakarak\nBaslangic X ve Epsilon degerleri: ");
+	printf("Sırasıyla, aralarında boşluk bırakarak\n"
+			"Baslangıç X ve Epsilon değerleri: ");
 	scanf("%lf %lf", &xVal, &epsilon);
 
 	//Fonksiyon
@@ -61,16 +61,17 @@ void newtonRaphsonMethod() {
 		return value;
 	}
 
+	//Newton Raphson yontemiyle kokun bulundugu dongu
 	do {
 		//X(k) tutmak icin
 		xValTemp = xVal;
 
 		///X(k+1) hesabi
-		xVal = xVal - (f(xVal)/df(xVal));
+		xVal = xVal - (f(xVal) / df(xVal));
 
 	} while (fabs(xVal - xValTemp) > epsilon);
 
-	printf("Fonksiyonun koku: %lf", xVal);
+	printf("Fonksiyonun kökü: %lf", xVal);
 }
 
 #endif /* NEWTONRAPHSONMETHOD_H_ */
