@@ -11,8 +11,14 @@
 #include "graphicalMethod.h"
 #include "bisectionMethod.h"
 #include "regulaFalsiMethod.h"
+#include "newtonRaphsonMethod.h"
+
 
 int main() {
+	//Onemli Uyarilar
+	printf("Kök bulma yöntemlerinde kullanılacak\n"
+			"fonksiyonları lütfen polinom veriniz.\n\n");
+
 	//Degisken tanimlari
 	int islem = 0;
 	char tekrar = 'e';
@@ -22,6 +28,7 @@ int main() {
 		printf("1-Grafik metoduyla kök bulma\n"
 				"2-Bisection metoduyla kök bulma\n"
 				"3-Regula Falsi metoduyla kök bulma\n"
+				"4-Newton Raphson metoduyla kök bulma\n"
 				"Yapmak istediginiz islemin numarasini giriniz: ");
 		scanf("%d", &islem);
 
@@ -35,6 +42,9 @@ int main() {
 			break;
 			case (3):
 			regulaFalsiMethod();
+			break;
+			case (4):
+			newtonRaphsonMethod();
 			break;
 			default:
 			printf("Islem secilmedi.");
