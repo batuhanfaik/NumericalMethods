@@ -58,7 +58,7 @@ void inverseOfMatrix() {
 		}
 	}
 
-	//Ana matrisi birim matris formatina getirme
+	//Ust ucgen matrisi birim matris formatina getirme
 	for (int step = 0; step < n; step++) {
 		for (i = step+1; i < n; i++) {
 			tempVal = matrix[step][i];
@@ -69,7 +69,7 @@ void inverseOfMatrix() {
 		}
 	}
 
-	printf("\n\nMatrisin kendisi:\n");
+	/*printf("\n\nMatrisin kendisi:\n");
 
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++) {
@@ -77,7 +77,7 @@ void inverseOfMatrix() {
             printf("%.4f  ", matrix[i][j]);
 		}
 		printf("\n");
-	}
+	}*/
 
 	printf("\n\nMatrisin tersi:\n");
 
