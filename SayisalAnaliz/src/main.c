@@ -14,6 +14,7 @@
 #include "regulaFalsiMethod.h"
 #include "newtonRaphsonMethod.h"
 #include "inverseOfMatrix.h"
+#include "gaussJordanMethod.h"
 #include "trapezodialMethod.h"
 #include "simpsonMethod.h"
 
@@ -35,6 +36,7 @@ int main() {
 				"3-Regula Falsi metoduyla kök bulma\n"
 				"4-Newton Raphson metoduyla kök bulma\n"
 				"5-Nümerik yolla matrisin inversinin alınması\n"
+				"6-Gauss Jordan metoduyla denklem takımı çözümü\n"
 				"7-Trapez metoduyla integrasyon\n"
 				"8-Simpson metoduyla integrasyon\n"
 				"\nYapmak istediginiz işlemin numarasini giriniz: ");
@@ -55,6 +57,9 @@ int main() {
 			break;
 		case (5):
 			inverseOfMatrix();
+			break;
+		case (6):
+			gaussJordan();
 			break;
 		case (7):
 			trapezodial();
