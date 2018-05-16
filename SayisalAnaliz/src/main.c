@@ -5,10 +5,13 @@
  *      Author: batuhanfaik
  */
 
+//Tumlesik kutuphaneler
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <locale.h>
+
+//Yazilan kutuphaneler
 #include "graphicalMethod.h"
 #include "bisectionMethod.h"
 #include "regulaFalsiMethod.h"
@@ -17,13 +20,14 @@
 #include "gaussJordanMethod.h"
 #include "trapezodialMethod.h"
 #include "simpsonMethod.h"
+#include "numericalDerivation.h"
 
 int main() {
 	//Turkcelestirme
 	setlocale(LC_ALL, "Turkish");
 
 	//Onemli Uyarilar
-	printf("Kullanılacak fonksiyonları lütfen polinom veriniz.\n\n");
+	printf("Kullanılacak fonksiyonları lütfen polinom olarak veriniz.\n\n");
 
 	//Degisken tanimlari
 	int islem = 0;
@@ -39,6 +43,7 @@ int main() {
 				"6-Gauss Jordan metoduyla denklem takımı çözümü\n"
 				"7-Trapez metoduyla integrasyon\n"
 				"8-Simpson metoduyla integrasyon\n"
+				"9-Nümerik türev hesaplama\n"
 				"\nYapmak istediginiz işlemin numarasini giriniz: ");
 		scanf("%d", &islem);
 
@@ -66,6 +71,9 @@ int main() {
 			break;
 		case (8):
 			simpson();
+			break;
+		case (9):
+			numericalDerivation();
 			break;
 		default:
 			printf("Islem secilmedi.");

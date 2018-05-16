@@ -24,7 +24,7 @@ void newtonRaphson() {
 		scanf("%lf", &coefficient[i]);
 	}
 
-	//Turevin katsayiar dizisi
+	//Analitik turevin katsayiar dizisi
 	double dcoefficient[degree];
 	for (int i = (degree - 1); i >= 0; i--) {
 		dcoefficient[i] = coefficient[i + 1] * (i + 1);
@@ -52,7 +52,7 @@ void newtonRaphson() {
 		double value = 0;
 		double thisx = 1;
 
-		//Fonksiyonun turevinin hesaplandigi dongu
+		//Fonksiyonun analitik turevinin hesaplandigi dongu
 		for (int i = 0; i < degree; i++) {
 			value = dcoefficient[i] * thisx + value;
 			thisx = thisx * xval;
