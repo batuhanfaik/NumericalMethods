@@ -10,8 +10,8 @@
 
 void graphical() {
 	//Degiskenler
-	double xval, delta, epsilon;
-	int degree;
+	double xval, delta, deltaTest, epsilon;
+	int degree, divergence = 0;
 
 	//Girdiler
 	printf("Kaçıncı dereceden polinomun kökünü arıyorsunuz?: ");
@@ -47,17 +47,25 @@ void graphical() {
 	}
 
 	while ((((f(xval + delta) - f(xval)) > epsilon)
-			|| ((f(xval) - f(xval + delta)) > epsilon)) && (f(xval) != 0)
-			&& (delta >= epsilon)) {
-		while (((f(xval) * f(xval + delta) > 0)) && f(xval + delta) != 0) {
+			|| ((f(xval) - f(xval + delta)) > epsilon)) && (f(xval) != 0)) {
+		while (((f(xval) * f(xval + delta) > 0)) && (f(xval + delta) != 0) && (divergence == 0)){
 			xval += delta;
+			deltaTest = deltaTest/2;
+			if (deltaTest < epsilon){
+				divergence = 1;
+			}
 		}
 		xval -= delta;
 		delta /= 2;
+		deltaTest = delta;
 	}
 
 	//Cikti
-	printf("Fonksiyonun kökü: %lf", xval + delta);
+	if (divergence == 1){
+		printf("Kök bulunamadı :(");
+	} else {
+		printf("Fonksiyonun kökü: %lf", xval + delta);
+	}
 }
 
 #endif /* GRAPHICALMETHOD_H_ */
