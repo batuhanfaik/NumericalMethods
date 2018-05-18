@@ -21,9 +21,10 @@ void gaussJordan() {
 	double inverse[n][n];
 	double constants[n][1];
 
-	printf("Elemanlar arasına boşluk bırakarak\n"
-			"A matrisinin %d elemanını da giriniz: \n", n * n);
+	printf("Elemanlar arasına boşluk bırakarak satırları teker teker giriniz: \n",
+			n * n);
 	for (i = 0; i < n; i++) {
+		printf("%d. Satır: ", i+1);
 		for (j = 0; j < n; j++) {
 			scanf("%lf", &matrix[i][j]);
 		}
