@@ -81,7 +81,7 @@ int main() {
 
 		//Tekrarlayim mi?
 		tekrar = 'h';
-		printf("\n\nTekrar işlem yapmak istiyor musunuz? (e/h) ");
+		printf("\n\nTekrar işlem yapmak istiyor musunuz (e/h)? ");
 		scanf(" %c", &tekrar);
 		printf("\n");
 	}

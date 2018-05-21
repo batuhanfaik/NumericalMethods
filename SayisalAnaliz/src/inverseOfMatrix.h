@@ -43,7 +43,18 @@ void inverseOfMatrix() {
 	double tempVal;
 	int diagLocZero = 0, diagLocNonZero = 0, diagZero = 0, found = 0;
 
-	//Kosegendeki 0'larin tespiti
+    //Kosegendeki tum degerler 0mi kontrolu
+    while(matrix[diagLocZero][diagLocZero] == 0){
+        diagLocZero ++;
+        if(diagLocZero == (n - 1)){
+            diagZero = 2;
+        }
+    }
+
+    //diagLocZero 0lama
+    diagLocZero = 0;
+
+    //Kosegendeki 0'larin tespiti
 	while(diagZero == 0){
 		if (matrix[diagLocZero][diagLocZero] == 0){ //Kosegendeki 0i tespit
 			diagLocNonZero = 0;
@@ -114,9 +125,12 @@ void inverseOfMatrix() {
 		}
 	}
 
-	if (determinant == 0) {
-		printf("Determinantı 0 olan matrisin inversi yoktur.");
-	} else {
+    if(diagZero == 2) {
+        printf("Asal köşegendeki tüm elemanlar 0 olduğundan hesaplanamadı.\n"
+               "Lütfen başka bir matris veriniz.");
+	} else if (determinant == 0) {
+        printf("Determinantı 0 olan matrisin inversi yoktur.");
+    } else {
 		printf("\n\nMatrisin tersi:\n");
 
 		for (i = 0; i < n; i++) {

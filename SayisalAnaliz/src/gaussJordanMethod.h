@@ -21,6 +21,7 @@ void gaussJordan() {
 	double inverse[n][n];
 	double constants[n][1];
 
+	//A matrisi okuma
 	printf("Elemanlar arasına boşluk bırakarak satırları teker teker giriniz: \n",
 			n * n);
 	for (i = 0; i < n; i++) {
@@ -30,9 +31,10 @@ void gaussJordan() {
 		}
 	}
 
-	printf("Sırasıyla, elemanlar arasına boşluk bırakarak\n"
-			"C matrisinin %d elemanını da giriniz: \n", n);
+	//C matrisi okuma
+	printf("C matrisinin elemanlarını teker teker giriniz: \n", n);
 	for (i = 0; i < n; i++) {
+	    printf("%d. Satır: ", i+1);
 		scanf("%lf", &constants[i][0]);
 	}
 
@@ -50,6 +52,17 @@ void gaussJordan() {
 	//Degisken tanimlama
 	double tempVal;
 	int diagLocZero = 0, diagLocNonZero = 0, diagZero = 0, found = 0;
+
+	//Kosegendeki tum degerler 0 mi kontrolu
+    while(matrix[diagLocZero][diagLocZero] == 0){
+        diagLocZero ++;
+        if(diagLocZero == (n - 1)){
+            diagZero = 2;
+        }
+    }
+
+    //diagLocZero 0lama
+    diagLocZero = 0;
 
 	//Kosegendeki 0'larin tespiti
 	while(diagZero == 0){
@@ -110,11 +123,16 @@ void gaussJordan() {
 		}
 	}
 
-	printf("\nX değerleri:\n");
+	if(diagZero == 2){
+        printf("Asal köşegendeki tüm elemanlar 0 olduğundan hesaplanamadı.\n"
+               "Lütfen başka bir matris veriniz.");
+    }else{
+        printf("\nX değerleri:\n");
 
-	for (i = 0; i < n; i++) {
-		printf("X(%d)= %.4f\n", i + 1, constants[i][0]);
-	}
+        for (i = 0; i < n; i++) {
+            printf("X(%d)= %.4f\n", i + 1, constants[i][0]);
+        }
+    }
 }
 
 #endif /* GAUSSJORDANMETHOD_H_ */
