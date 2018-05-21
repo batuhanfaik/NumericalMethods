@@ -10,7 +10,7 @@
 
 void gaussJordan() {
 	//Matris okuma degiskenleri
-	int i = 0, j = 0, n = 0;
+	int i = 0, j = 0, n = 0, determinant = 1;
 
 	printf("Matrisler AX=C formatında olmak üzere\n"
 			"A kare matrisinin satır sayısını giriniz: ");
@@ -123,10 +123,19 @@ void gaussJordan() {
 		}
 	}
 
+	//Degelerin -nan bulunmasi durumu kontrolu
+	for(i = 0; i<n; i++){
+		if(constants[i][0] != constants[i][0]){
+			determinant = 0;
+		}
+	}
+
 	if(diagZero == 2){
         printf("Asal köşegendeki tüm elemanlar 0 olduğundan hesaplanamadı.\n"
                "Lütfen başka bir matris veriniz.");
-    }else{
+    }else if(determinant == 0){
+		printf("Determinantı 0 olan matrisin inversi olmadığından bilinmeyen değerler de bulunamadı.");
+	}else{
         printf("\nX değerleri:\n");
 
         for (i = 0; i < n; i++) {

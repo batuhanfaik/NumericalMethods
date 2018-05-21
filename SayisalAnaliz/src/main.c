@@ -76,13 +76,21 @@ int main() {
 			numericalDerivation();
 			break;
 		default:
-			printf("Islem secilmedi.");
+			printf("İşlem seçilmedi.");
 		}
 
 		//Tekrarlayim mi?
 		tekrar = 'h';
 		printf("\n\nTekrar işlem yapmak istiyor musunuz (e/h)? ");
 		scanf(" %c", &tekrar);
+
+		//tekrar karakter kontrolu
+		while(tekrar != 'e' && tekrar != 'h'){
+			printf("\"%c\" geçerli değildir.\n"
+		  "Lütfen geçerli karakter giriniz (e/h): ", tekrar);
+			scanf(" %c", &tekrar);
+		}
+
 		printf("\n");
 	}
 

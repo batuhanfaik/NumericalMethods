@@ -54,8 +54,16 @@ void graphical() {
 			testCounter++;
 			if (testCounter % 1000 == 0){
 				printf("Verilen değerler sonucu %d iterasyondur kök bulunamadı.\n"
-		   "Devam etmek istiyor musunuz? (e/h) ", testCounter);
+		   "X değeri şu anda \"%.4lf\"\n"
+		   "Devam etmek istiyor musunuz (e/h)? ", testCounter, xVal);
 				scanf(" %c", &devam);
+
+				//devam karakter kontrolu
+				while(devam != 'e' && devam != 'h'){
+					printf("\"%c\" geçerli değildir.\n"
+						   "Lütfen geçerli karakter giriniz (e/h): ", devam);
+					scanf(" %c", &devam);
+				}
 			}
 		}
 		xVal -= delta;
