@@ -10,8 +10,9 @@
 
 void graphical() {
 	//Degiskenler
-	double xval, delta, deltaTest, epsilon;
-	int degree, divergence = 0;
+	double xVal, delta, epsilon;
+	int degree, divergence = 0, testCounter = 0;
+	char devam = 'e';
 
 	//Girdiler
 	printf("Kaçıncı dereceden polinomun kökünü arıyorsunuz?: ");
@@ -26,7 +27,7 @@ void graphical() {
 
 	//Girdiler
 	printf("Başlangıç X değeri: ");
-	scanf("%lf", &xval);
+	scanf("%lf", &xVal);
 
 	printf("Sırasıyla, aralarında boşluk bırakarak\n"
 			"Delta ve Epsilon değerleri: ");
@@ -46,26 +47,29 @@ void graphical() {
 		return value;
 	}
 
-	while ((((f(xval + delta) - f(xval)) > epsilon)
-			|| ((f(xval) - f(xval + delta)) > epsilon)) && (f(xval) != 0)) {
-		while (((f(xval) * f(xval + delta) > 0)) && (f(xval + delta) != 0) && (divergence == 0)){
-			xval += delta;
-			deltaTest = deltaTest/2;
-			if (deltaTest < epsilon){
-				divergence = 1;
+	//Kok hesabi
+	while ((fabs(f(xVal + delta) - f(xVal)) > epsilon) && (devam == 'e')){
+		while ((f(xVal)*f(xVal + delta) > 0) && (devam == 'e')){
+			xVal += delta;
+			testCounter++;
+			if (testCounter % 1000 == 0){
+				printf("Verilen değerler sonucu %d iterasyondur kök bulunamadı.\n"
+		   "Devam etmek istiyor musunuz? (e/h) ", testCounter);
+				scanf(" %c", &devam);
 			}
 		}
-		xval -= delta;
+		xVal -= delta;
 		delta /= 2;
-		deltaTest = delta;
+		testCounter = 0;
 	}
 
 	//Cikti
-	if (divergence == 1){
+	if (devam != 'e'){
 		printf("Kök bulunamadı :(");
 	} else {
-		printf("Fonksiyonun kökü: %lf", xval + delta);
+		printf("Fonksiyonun kökü: %lf", xVal + delta);
 	}
+
 }
 
 #endif /* GRAPHICALMETHOD_H_ */

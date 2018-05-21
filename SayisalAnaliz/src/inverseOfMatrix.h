@@ -41,6 +41,33 @@ void inverseOfMatrix() {
 
 	//Degisken tanimlama
 	double tempVal;
+	int diagLocZero = 0, diagLocNonZero = 0, diagZero = 0, found = 0;
+
+	//Kosegendeki 0'larin tespiti
+	while(diagZero == 0){
+		if (matrix[diagLocZero][diagLocZero] == 0){ //Kosegendeki 0i tespit
+			diagLocNonZero = 0;
+			for(j = 0; j < n; j++){
+				while(matrix[diagLocNonZero][diagLocZero] == 0 && found == 0) { //Kosegeni 0 olmayan satiri tespit
+					diagLocNonZero++;
+				}
+				//Hem matrixte hem de inverste yer degistirme
+				tempVal = matrix[diagLocZero][j];
+				matrix[diagLocZero][j] = matrix[diagLocNonZero][j];
+				matrix[diagLocNonZero][j] = tempVal;
+				tempVal = inverse[diagLocZero][j];
+				inverse[diagLocZero][j] = inverse[diagLocNonZero][j];
+				inverse[diagLocNonZero][j] = tempVal;
+				found = 1; //Kosegeni 0 olmayan satirin indisi artmamasi icin konulan degisken
+			}
+		}
+		//0 tespiti icin kosegeni arttirma found'i 0lama
+		diagLocZero++;
+		found = 0;
+		if (diagLocZero == n){
+			diagZero = 1;
+		}
+	}
 
 	//Ana matrisi ust ucgen formatina getirme
 	for (int step = 0; step < n; step++) {
